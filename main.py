@@ -64,3 +64,10 @@ def plot_confusion_matrix(cm,classes,normalize=False,title = "Confusion Matrix",
 p_test = model.predict(X_test).argmax(axis = 1)
 cm = confusion_matrix(y_test,p_test)
 plot_confusion_matrix(cm,list(range(10)))
+
+misclassified_idx = np.where(p_test != y_test)[0]
+i = np.random.choice(misclassified_idx)
+plt.imshow(X_test[i],cmap = 'gray')
+plt.title("True label ")
+plt.title("True label: %s Predicted: %s" % (y_test[i], p_test[i]))
+plt.show()
